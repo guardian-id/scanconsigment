@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Sisa Stock</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="container">
+    <div style="font-size: 22px; text-align: center; font-weight: bold;">CONSIGNMENT INVENTORY</div>
+    <div style="font-size: 14px; text-align: center;">Menu untuk mengurangi & menambahkan stok</div>
+    <div style="font-size: 14px; text-align: center;">(Receiving-in, Transfer-out, Adjustment in/out)</div>
+    <div class="form-section">
+        <hr>
+        <div class="input-group">
+            <label>Nama Penginput</label>
+            <input type="text" id="mainNama" placeholder="Ketik nama Anda">
+        </div>
+
+        <div class="input-group">
+            <label>Kode Toko</label>
+            <input type="number" id="mainStore" placeholder="Contoh: 6406">
+        </div>
+
+        <div class="input-group">
+            <label for="mainJenis">Jenis Transaksi</label>
+            <select name="mainJenis" id="mainJenis">
+                <option value="">Pilih Jenis</option>
+                <option value="Receive">Menambahkan</option>
+                <option value="Transfer">Mengurangi</option>
+            </select>
+        </div>
+
+        <hr>
+
+        <div class="input-group">
+            <label>Kode Barang (ketik atau scan)</label>
+            <div class="barcode-container">
+                <input type="number" id="mainBarcode" placeholder="Ketik barcode atau PLU">
+                <button id="startBtn" title="Scan lewat kamera">📷 Scan</button>
+            </div>
+        </div>
+
+        <div id="reader"></div>
+
+        <div class="input-group">
+            <label>Jumlah (EA - sesuai satuan jual)</label>
+            <input type="number" id="mainQty" placeholder="0">
+        </div>
+
+        <button id="mainSendBtn">Submit Data</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>

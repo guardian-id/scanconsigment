@@ -1,0 +1,120 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #fbfcfd;
+    margin: 0;
+    padding: 10px;
+}
+
+.container {
+    max-width: 450px;
+    margin: auto;
+    background: rgb(177, 175, 175);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #1a73e8;
+    margin-top: 0;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: semi-bold;
+    margin-bottom: 5px;
+    color: #070707;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+/* Container khusus barcode agar tombol scan ada di samping input */
+.barcode-container {
+    display: flex;
+    gap: 10px;
+}
+
+#startBtn {
+    flex-shrink: 0;
+    width: 80px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#reader {
+    width: 100%;
+    display: none;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #1a73e8;
+}
+
+#mainSendBtn {
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#mainSendBtn:active {
+    background-color: #1e7e34;
+    transform: scale(0.98);
+}
+
+#mainSendBtn:disabled {
+    background-color: #ccc;
+}
+select {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  /* Menghilangkan panah bawaan browser */
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Memberi efek saat box diklik */
+select:focus {
+  border-color: #2ecc71;
+  box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+}
