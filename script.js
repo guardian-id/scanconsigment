@@ -15,12 +15,13 @@ document.getElementById('startBtn').addEventListener('click', () => {
         { facingMode: "environment" }, // Prioritas kamera belakang
         { 
             fps: 20,                         // Kecepatan frame lebih tinggi agar mulus
-            qrbox: { width: 280, height: 180 }, // Ukuran kotak bidik
-            // PENGATURAN RESOLUSI TINGGI (Agar Gambar Tajam/Gak Blur)
+            qrbox: (viewfinderWidth, viewfinderHeight) => {
+                return { width: viewfinderWidth * 0.8, height: viewfinderHeight * 0.4 };
+            },
+            // 2. Tambahkan aspect ratio agar benar-benar penuh
             videoConstraints: {
-                width: { min: 640, ideal: 1280, max: 1920 },
-                height: { min: 480, ideal: 720, max: 1080 },
-                facingMode: "environment"
+                facingMode: "environment",
+                aspectRatio: window.innerHeight / window.innerWidth // Mengikuti rasio HP
             }
         },
         (decodedText) => {
