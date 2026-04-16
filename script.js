@@ -117,3 +117,16 @@ document.getElementById('mainSendBtn').addEventListener('click', async () => {
         btn.disabled = false;
     }
 });
+// --- AUTO-FILL KODE STORE DARI URL ---
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const storeOtomatis = urlParams.get('store'); // Mengambil data dari ?store=...
+
+    if (storeOtomatis) {
+        const fieldStore = document.getElementById('mainStore');
+        if (fieldStore) {
+            fieldStore.value = storeOtomatis;
+            console.log("Kode Store berhasil terisi otomatis: " + storeOtomatis);
+        }
+    }
+});
