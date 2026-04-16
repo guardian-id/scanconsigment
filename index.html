@@ -16,13 +16,13 @@
     <div class="form-section">
         <hr>
         <div class="input-group">
-            <label>Nama Penginput</label>
-            <input type="text" oninput="this.value = this.value.replace(/[0-9]/g, '');" id="mainNama" placeholder="Ketik nama Anda">
+        <label>Kode Toko</label>
+        <input type="number" oninput="if(this.value.length > 4) this.value = this.value.slice(0, 4);" id="mainStore" placeholder="Contoh: 6406">
         </div>
 
         <div class="input-group">
-            <label>Kode Toko</label>
-            <input type="number" oninput="if(this.value.length > 4) this.value = this.value.slice(0, 4);" id="mainStore" placeholder="Contoh: 6406">
+            <label>Nama Penginput</label>
+            <input type="text" oninput="this.value = this.value.replace(/[0-9]/g, '');" id="mainNama" placeholder="Ketik nama Anda">
         </div>
 
         <div class="input-group">
