@@ -118,3 +118,31 @@ select:focus {
   border-color: #2ecc71;
   box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
 }
+
+/* Mengatur container agar menutupi layar saat aktif */
+#reader {
+    width: 100% !important;
+    height: 100vh !important;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: none; /* Sembunyikan jika tidak digunakan */
+}
+
+/* Memaksa elemen video di dalam library agar memenuhi container */
+#reader video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover; /* Agar video tidak gepeng/stretch */
+}
+
+/* Sembunyikan tombol 'Stop Scanning' bawaan library jika mengganggu */
+#reader__dashboard_section_csr button {
+    display: none;
+}
+
+#reader video {
+    object-fit: cover !important;
+}
