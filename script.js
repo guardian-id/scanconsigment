@@ -6,41 +6,56 @@ const html5QrCode = new Html5Qrcode("reader");
 
 // ---------------------------------------------------------
 // 2. LOGIKA SCANNER (OPTIMAL UNTUK MENCEGAH BLUR)
-// ---------------------------------------------------------
 document.getElementById('startBtn').addEventListener('click', () => {
     const readerElement = document.getElementById('reader');
-    readerElement.style.display = 'block';
-    
+    readerElement.style.display = 'block'; 
+
+    // 1. MASUK MODE FULLSCREEN SAAT KLIK SCAN
+    if (readerElement.requestFullscreen) {
+        readerElement.requestFullscreen();
+    } else if (readerElement.webkitRequestFullscreen) {
+        readerElement.webkitRequestFullscreen(); // Untuk Safari/iOS
+    }
+
     html5QrCode.start(
-        { facingMode: "environment" }, // Prioritas kamera belakang
+        { facingMode: "environment" },
         { 
-            fps: 20,                         // Kecepatan frame lebih tinggi agar mulus
+            fps: 20,
             qrbox: (viewfinderWidth, viewfinderHeight) => {
                 return { width: viewfinderWidth * 0.8, height: viewfinderHeight * 0.4 };
             },
-            // 2. Tambahkan aspect ratio agar benar-benar penuh
+            // --- OPTIMASI RESOLUSI AGAR TAJAM & FULL SCREEN ---
             videoConstraints: {
                 facingMode: "environment",
+                width: { ideal: 1280 },  // Menjaga ketajaman gambar
+                height: { ideal: 720 },  // Menjaga ketajaman gambar
                 aspectRatio: window.innerHeight / window.innerWidth // Mengikuti rasio HP
             }
         },
         (decodedText) => {
             // Jika Berhasil Scan:
-            document.getElementById('mainBarcode').value = decodedText; // Isi kolom barcode
-            
-            if (navigator.vibrate) navigator.vibrate(100); // Getar tanda sukses
-            
-            // Tutup Kamera Otomatis
+            document.getElementById('mainBarcode').value = decodedText;
+            if (navigator.vibrate) navigator.vibrate(100);
+
+            // 2. KELUAR DARI FULLSCREEN SETELAH BERHASIL
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+
             html5QrCode.stop().then(() => { 
                 readerElement.style.display = 'none'; 
             }).catch(err => console.warn("Gagal stop kamera:", err));
         }
     ).catch(err => {
-        alert("Gagal membuka kamera. Pastikan izin kamera diberikan dan lensa tidak tertutup.");
+        alert("Gagal membuka kamera. Pastikan izin kamera diberikan.");
         readerElement.style.display = 'none';
+        
+        // Pastikan keluar fullscreen jika gagal buka kamera
+        if (document.exitFullscreen) document.exitFullscreen();
     });
 });
-
 // ---------------------------------------------------------
 // 3. LOGIKA KIRIM DATA & TERIMA PESAN BALIK
 // ---------------------------------------------------------
