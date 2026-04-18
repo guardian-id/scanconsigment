@@ -82,7 +82,7 @@ document.getElementById('mainSendBtn').addEventListener('click', async () => {
         barcode: barcode,
         jenis: jenis,
         qty: parseInt(qty),
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toLocaleString('sv-SE').replace(' ', 'T')
     };
 
     try {
