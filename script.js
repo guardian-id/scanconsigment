@@ -69,6 +69,11 @@ document.getElementById('mainSendBtn').addEventListener('click', async () => {
     const qty = document.getElementById('mainQty').value;
     const jenis = document.getElementById('mainJenis').value; // Ambil jenis
 
+    // 2. Logika penyesuaian waktu otomatis (WIB, WITA, WIT)
+    const sekarang = new Date();
+    const offset = sekarang.getTimezoneOffset() * 60000;
+    const waktuLokal = new Date(sekarang.getTime() - offset);
+
     // Validasi Dasar
     if (!nama || !store || !barcode || !qty || !jenis) {
         alert("⚠️ Mohon lengkapi semua data (Nama, Store, Barcode, Qty, & Jenis)!");
@@ -82,7 +87,7 @@ document.getElementById('mainSendBtn').addEventListener('click', async () => {
         barcode: barcode,
         jenis: jenis,
         qty: parseInt(qty),
-        timestamp: new Date().toLocaleString('sv-SE').replace(' ', 'T')
+        timestamp: waktuLokal.toISOString().slice(0, -1)
     };
 
     try {
