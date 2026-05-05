@@ -1,5 +1,5 @@
 // 1. URL POWER AUTOMATE (URL Milik Bos)
-const powerAutomateUrl = "https://default9ec0d6c58a25418fb3841c77c55584.c2.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/51bca68d357d4d1caed9194b68e882a2/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=KSDuVbQVZELWa-UTZZybscXlvsARTjA_eQ31LzWk564";
+const powerAutomateUrl = "https://default9ec0d6c58a25418fb3841c77c55584.c2.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/913b917c15914d00af97100192d183b2/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Tb1ERI5pnd7fJr1vWlmG6ywL8s3sN81yvf9QmQBF7o0";
 
 // Inisialisasi Library QR Code
 const html5QrCode = new Html5Qrcode("reader");
